@@ -1,0 +1,24 @@
+schema_version: 1
+example_id: egfr_p00533_1xkk_fmm_p2_model4
+target:
+  name: EGFR
+  uniprot_id: P00533
+  reference_pdb_id: 1XKK
+ligand:
+  pdb_ligand_code: FMM
+  source_identifier: 1XKK_FMM_A_91
+docking_pose:
+  pose_set: p2
+  model: 4
+  pose_id: "P00533_EGFR|p2|model4"
+  pose_label: correct
+  docking_score_kcal_mol: -10.319
+shortmd:
+  production_time_ns: 5.0
+  n_replicas: 5
+  input_rmsd_unit: nm
+  output_score_unit: angstrom
+  expected_md_score_angstrom: 4.872631
+  fit_group: C-alpha
+  ligand_group: LIG
+  heavy_atoms_only: true

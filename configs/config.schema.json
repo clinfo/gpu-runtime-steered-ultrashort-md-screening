@@ -1,0 +1,530 @@
+{
+  "$defs": {
+    "GromacsConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "executable": {
+          "minLength": 1,
+          "title": "Executable",
+          "type": "string"
+        },
+        "maxwarn": {
+          "minimum": 0,
+          "title": "Maxwarn",
+          "type": "integer"
+        },
+        "ntmpi": {
+          "minimum": 1,
+          "title": "Ntmpi",
+          "type": "integer"
+        },
+        "ntomp": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "const": "auto",
+              "type": "string"
+            }
+          ],
+          "title": "Ntomp"
+        },
+        "offload": {
+          "$ref": "#/$defs/OffloadConfig"
+        },
+        "pin": {
+          "title": "Pin",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "executable",
+        "ntmpi",
+        "ntomp",
+        "pin",
+        "offload",
+        "maxwarn"
+      ],
+      "title": "GromacsConfig",
+      "type": "object"
+    },
+    "InputConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "fit_group": {
+          "const": "C-alpha",
+          "title": "Fit Group",
+          "type": "string"
+        },
+        "index": {
+          "minLength": 1,
+          "title": "Index",
+          "type": "string"
+        },
+        "ligand_group": {
+          "const": "LIG",
+          "title": "Ligand Group",
+          "type": "string"
+        },
+        "ligand_resname": {
+          "pattern": "^[A-Za-z0-9_+-]{1,16}$",
+          "title": "Ligand Resname",
+          "type": "string"
+        },
+        "prepared_system_dir": {
+          "minLength": 1,
+          "title": "Prepared System Dir",
+          "type": "string"
+        },
+        "start_structure": {
+          "minLength": 1,
+          "title": "Start Structure",
+          "type": "string"
+        },
+        "topology": {
+          "minLength": 1,
+          "title": "Topology",
+          "type": "string"
+        }
+      },
+      "required": [
+        "prepared_system_dir",
+        "start_structure",
+        "topology",
+        "index",
+        "ligand_resname",
+        "fit_group",
+        "ligand_group"
+      ],
+      "title": "InputConfig",
+      "type": "object"
+    },
+    "LoggingConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "console": {
+          "title": "Console",
+          "type": "boolean"
+        },
+        "event_log": {
+          "title": "Event Log",
+          "type": "boolean"
+        },
+        "level": {
+          "enum": [
+            "DEBUG",
+            "INFO",
+            "WARNING",
+            "ERROR"
+          ],
+          "title": "Level",
+          "type": "string"
+        }
+      },
+      "required": [
+        "level",
+        "event_log",
+        "console"
+      ],
+      "title": "LoggingConfig",
+      "type": "object"
+    },
+    "MonitoringConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "poll_interval_seconds": {
+          "exclusiveMinimum": 0,
+          "title": "Poll Interval Seconds",
+          "type": "number"
+        }
+      },
+      "required": [
+        "poll_interval_seconds"
+      ],
+      "title": "MonitoringConfig",
+      "type": "object"
+    },
+    "OffloadConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "bonded": {
+          "enum": [
+            "gpu",
+            "cpu",
+            "auto"
+          ],
+          "title": "Bonded",
+          "type": "string"
+        },
+        "nonbonded": {
+          "enum": [
+            "gpu",
+            "cpu",
+            "auto"
+          ],
+          "title": "Nonbonded",
+          "type": "string"
+        },
+        "pme": {
+          "enum": [
+            "gpu",
+            "cpu",
+            "auto"
+          ],
+          "title": "Pme",
+          "type": "string"
+        },
+        "update": {
+          "enum": [
+            "gpu",
+            "cpu",
+            "auto"
+          ],
+          "title": "Update",
+          "type": "string"
+        }
+      },
+      "required": [
+        "nonbonded",
+        "pme",
+        "bonded",
+        "update"
+      ],
+      "title": "OffloadConfig",
+      "type": "object"
+    },
+    "PruningConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "enabled": {
+          "default": false,
+          "title": "Enabled",
+          "type": "boolean"
+        },
+        "grace_period_seconds": {
+          "minimum": 0,
+          "title": "Grace Period Seconds",
+          "type": "number"
+        },
+        "threshold_angstrom": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Threshold Angstrom"
+        }
+      },
+      "required": [
+        "grace_period_seconds"
+      ],
+      "title": "PruningConfig",
+      "type": "object"
+    },
+    "RestartConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "retry_failed": {
+          "title": "Retry Failed",
+          "type": "boolean"
+        },
+        "validate_existing_outputs": {
+          "title": "Validate Existing Outputs",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "retry_failed",
+        "validate_existing_outputs"
+      ],
+      "title": "RestartConfig",
+      "type": "object"
+    },
+    "RmsdConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "backend": {
+          "const": "gromacs",
+          "title": "Backend",
+          "type": "string"
+        },
+        "fit_group": {
+          "const": "C-alpha",
+          "title": "Fit Group",
+          "type": "string"
+        },
+        "heavy_atoms_only": {
+          "const": true,
+          "title": "Heavy Atoms Only",
+          "type": "boolean"
+        },
+        "input_unit": {
+          "const": "nm",
+          "title": "Input Unit",
+          "type": "string"
+        },
+        "ligand_group": {
+          "const": "LIG",
+          "title": "Ligand Group",
+          "type": "string"
+        },
+        "output_unit": {
+          "const": "angstrom",
+          "title": "Output Unit",
+          "type": "string"
+        }
+      },
+      "required": [
+        "backend",
+        "input_unit",
+        "output_unit",
+        "fit_group",
+        "ligand_group",
+        "heavy_atoms_only"
+      ],
+      "title": "RmsdConfig",
+      "type": "object"
+    },
+    "RunConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Name"
+        },
+        "output_dir": {
+          "minLength": 1,
+          "title": "Output Dir",
+          "type": "string"
+        },
+        "overwrite": {
+          "const": false,
+          "default": false,
+          "title": "Overwrite",
+          "type": "boolean"
+        },
+        "resume": {
+          "default": false,
+          "title": "Resume",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "output_dir"
+      ],
+      "title": "RunConfig",
+      "type": "object"
+    },
+    "SchedulerConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "backend": {
+          "const": "local",
+          "title": "Backend",
+          "type": "string"
+        },
+        "gpu_ids": {
+          "anyOf": [
+            {
+              "const": "auto",
+              "type": "string"
+            },
+            {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            }
+          ],
+          "title": "Gpu Ids"
+        },
+        "tasks_per_gpu": {
+          "const": 1,
+          "title": "Tasks Per Gpu",
+          "type": "integer"
+        },
+        "work_stealing": {
+          "title": "Work Stealing",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "backend",
+        "gpu_ids",
+        "work_stealing",
+        "tasks_per_gpu"
+      ],
+      "title": "SchedulerConfig",
+      "type": "object"
+    },
+    "StageConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "enabled": {
+          "default": true,
+          "title": "Enabled",
+          "type": "boolean"
+        },
+        "mdp": {
+          "minLength": 1,
+          "title": "Mdp",
+          "type": "string"
+        }
+      },
+      "required": [
+        "mdp"
+      ],
+      "title": "StageConfig",
+      "type": "object"
+    },
+    "StagesConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "npt": {
+          "$ref": "#/$defs/StageConfig"
+        },
+        "nvt": {
+          "$ref": "#/$defs/StageConfig"
+        },
+        "production": {
+          "$ref": "#/$defs/StageConfig"
+        }
+      },
+      "required": [
+        "nvt",
+        "npt",
+        "production"
+      ],
+      "title": "StagesConfig",
+      "type": "object"
+    },
+    "TrajectoryConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "base_seed": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Base Seed"
+        },
+        "output_interval_ps": {
+          "exclusiveMinimum": 0,
+          "title": "Output Interval Ps",
+          "type": "number"
+        },
+        "production_time_ns": {
+          "exclusiveMinimum": 0,
+          "title": "Production Time Ns",
+          "type": "number"
+        },
+        "replicas": {
+          "minimum": 1,
+          "title": "Replicas",
+          "type": "integer"
+        },
+        "seeds": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Seeds"
+        }
+      },
+      "required": [
+        "production_time_ns",
+        "output_interval_ps",
+        "replicas"
+      ],
+      "title": "TrajectoryConfig",
+      "type": "object"
+    }
+  },
+  "$id": "https://example.org/gpu-shortmd/config.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "gromacs": {
+      "$ref": "#/$defs/GromacsConfig"
+    },
+    "input": {
+      "$ref": "#/$defs/InputConfig"
+    },
+    "logging": {
+      "$ref": "#/$defs/LoggingConfig"
+    },
+    "monitoring": {
+      "$ref": "#/$defs/MonitoringConfig"
+    },
+    "pruning": {
+      "$ref": "#/$defs/PruningConfig"
+    },
+    "restart": {
+      "$ref": "#/$defs/RestartConfig"
+    },
+    "rmsd": {
+      "$ref": "#/$defs/RmsdConfig"
+    },
+    "run": {
+      "$ref": "#/$defs/RunConfig"
+    },
+    "scheduler": {
+      "$ref": "#/$defs/SchedulerConfig"
+    },
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "stages": {
+      "$ref": "#/$defs/StagesConfig"
+    },
+    "trajectory": {
+      "$ref": "#/$defs/TrajectoryConfig"
+    }
+  },
+  "required": [
+    "schema_version",
+    "run",
+    "input",
+    "trajectory",
+    "stages",
+    "gromacs",
+    "rmsd",
+    "monitoring",
+    "pruning",
+    "scheduler",
+    "restart",
+    "logging"
+  ],
+  "title": "AppConfig",
+  "type": "object"
+}

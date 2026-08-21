@@ -1,0 +1,8 @@
+# Fixed-column scientific formats may contain meaningful alignment spaces.
+*.gro -whitespace
+*.itp -whitespace
+*.mdp -whitespace
+*.ndx -whitespace
+*.pdbqt -whitespace
+*.top -whitespace
+*.xvg -whitespace

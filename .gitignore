@@ -1,0 +1,52 @@
+# macOS
+.DS_Store
+.AppleDouble
+._*
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+.python-version
+
+# Environments
+.venv/
+venv/
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
+
+# Runtime outputs
+outputs/
+runs/
+logs/
+inspect_report/
+tmp/
+scratch/
+
+# Large simulation files
+*.xtc
+*.trr
+*.edr
+*.cpt
+*.tpr
+*.dcd
+*.nc
+*.zip
+*.tar
+*.tar.gz
+
+# Local source review artifacts
+_vendor_source/
+_source_snapshot/
+_source_work/

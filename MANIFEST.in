@@ -1,0 +1,22 @@
+include CHANGELOG.md
+include CITATION.cff
+include LICENSE
+include README.md
+
+recursive-include configs *.json *.yaml
+recursive-include templates *.md *.yaml
+
+include docs/legal/data_license.md
+include docs/legal/third_party_notices.md
+include docs/getting_started.md
+include docs/prepared_input.md
+include docs/configuration.md
+include docs/running.md
+include docs/runtime_control.md
+include docs/outputs.md
+include docs/method_and_limitations.md
+include docs/troubleshooting.md
+include docs/validated_environments.md
+
+recursive-include examples *.gro *.itp *.json *.md *.mdp *.ndx *.pdbqt *.top *.xvg *.yaml
+recursive-include tests *.py

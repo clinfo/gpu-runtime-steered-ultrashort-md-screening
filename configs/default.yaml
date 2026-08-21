@@ -1,0 +1,66 @@
+schema_version: 1
+run:
+  name: null
+  output_dir: outputs
+  resume: false
+  overwrite: false
+input:
+  prepared_system_dir: prepared_system
+  start_structure: start.gro
+  topology: topol.top
+  index: index.ndx
+  ligand_resname: LIG
+  fit_group: C-alpha
+  ligand_group: LIG
+trajectory:
+  production_time_ns: 1.0
+  output_interval_ps: 10.0
+  replicas: 5
+  base_seed: null
+  seeds: null
+stages:
+  nvt:
+    enabled: true
+    mdp: mdp/nvt.mdp
+  npt:
+    enabled: true
+    mdp: mdp/npt.mdp
+  production:
+    enabled: true
+    mdp: mdp/production.mdp
+gromacs:
+  executable: gmx
+  ntmpi: 1
+  ntomp: auto
+  pin: true
+  offload:
+    nonbonded: gpu
+    pme: gpu
+    bonded: cpu
+    update: cpu
+  maxwarn: 0
+rmsd:
+  backend: gromacs
+  input_unit: nm
+  output_unit: angstrom
+  fit_group: C-alpha
+  ligand_group: LIG
+  heavy_atoms_only: true
+monitoring:
+  poll_interval_seconds: 10
+pruning:
+  enabled: false
+  threshold_angstrom: null
+  grace_period_seconds: 30
+scheduler:
+  backend: local
+  gpu_ids: auto
+  work_stealing: true
+  tasks_per_gpu: 1
+restart:
+  retry_failed: false
+  validate_existing_outputs: true
+logging:
+  level: INFO
+  event_log: true
+  console: true

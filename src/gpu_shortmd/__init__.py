@@ -1,0 +1,5 @@
+"""Public package metadata for gpu-shortmd-screening."""
+
+from __future__ import annotations
+
+__version__ = "0.1.0"

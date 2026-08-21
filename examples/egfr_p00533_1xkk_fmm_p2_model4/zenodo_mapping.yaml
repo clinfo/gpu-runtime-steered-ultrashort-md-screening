@@ -1,0 +1,25 @@
+schema_version: 1
+record:
+  title: "Six-target docking poses and MD-scores for runtime-steered ultrashort molecular dynamics"
+  doi: "10.5281/zenodo.21835249"
+  url: "https://doi.org/10.5281/zenodo.21835249"
+  version: 2
+  publication_date: "2026-08-18"
+  creators:
+    - Natsuki Kanazawa
+    - Junta Asano
+    - Shigeyuki Matsumoto
+  license: "CC BY 4.0"
+  resource_type: Dataset
+pose:
+  pose_id: "P00533_EGFR|p2|model4"
+  public_pose_index: "00753"
+  directory: "data/P00533_EGFR/pose_00753"
+rmsd_files:
+  - rmsd_eq1.xvg
+  - rmsd_eq2.xvg
+  - rmsd_eq3.xvg
+  - rmsd_eq4.xvg
+  - rmsd_eq5.xvg
+rmsd_unit: nm
+expected_md_score_angstrom: 4.872631

@@ -1,0 +1,66 @@
+schema_version: 1
+run:
+  name: "P00533_EGFR|p2|model4"
+  output_dir: ../../outputs
+  resume: false
+  overwrite: false
+input:
+  prepared_system_dir: prepared_input
+  start_structure: p2_em.gro
+  topology: p2_topol.top
+  index: p2_index.ndx
+  ligand_resname: LIG
+  fit_group: C-alpha
+  ligand_group: LIG
+trajectory:
+  production_time_ns: 0.02
+  output_interval_ps: 10.0
+  replicas: 1
+  base_seed: null
+  seeds: [2026073001]
+stages:
+  nvt:
+    enabled: true
+    mdp: mdp/nvt.mdp
+  npt:
+    enabled: true
+    mdp: mdp/npt.mdp
+  production:
+    enabled: true
+    mdp: mdp/production_5ns.mdp
+gromacs:
+  executable: gmx
+  ntmpi: 1
+  ntomp: auto
+  pin: true
+  offload:
+    nonbonded: gpu
+    pme: gpu
+    bonded: cpu
+    update: cpu
+  maxwarn: 0
+rmsd:
+  backend: gromacs
+  input_unit: nm
+  output_unit: angstrom
+  fit_group: C-alpha
+  ligand_group: LIG
+  heavy_atoms_only: true
+monitoring:
+  poll_interval_seconds: 10
+pruning:
+  enabled: false
+  threshold_angstrom: null
+  grace_period_seconds: 30
+scheduler:
+  backend: local
+  gpu_ids: auto
+  work_stealing: false
+  tasks_per_gpu: 1
+restart:
+  retry_failed: false
+  validate_existing_outputs: true
+logging:
+  level: INFO
+  event_log: true
+  console: true

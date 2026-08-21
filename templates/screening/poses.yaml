@@ -1,0 +1,29 @@
+schema_version: 1
+poses:
+  - pose_id: TARGET1_CMPD0001_pose01
+    prepared_system_dir: prepared/TARGET1_CMPD0001_pose01
+    start_structure: start.gro
+    topology: topol.top
+    index: index.ndx
+    ligand_resname: LIG
+
+  - pose_id: TARGET1_CMPD0001_pose02
+    prepared_system_dir: prepared/TARGET1_CMPD0001_pose02
+    start_structure: start.gro
+    topology: topol.top
+    index: index.ndx
+    ligand_resname: LIG
+
+  - pose_id: TARGET1_CMPD0002_pose01
+    prepared_system_dir: prepared/TARGET1_CMPD0002_pose01
+    start_structure: start.gro
+    topology: topol.top
+    index: index.ndx
+    ligand_resname: LIG
+
+  - pose_id: TARGET2_CMPD0042_pose01
+    prepared_system_dir: prepared/TARGET2_CMPD0042_pose01
+    start_structure: start.gro
+    topology: topol.top
+    index: index.ndx
+    ligand_resname: LIG

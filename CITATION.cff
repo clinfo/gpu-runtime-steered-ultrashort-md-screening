@@ -1,0 +1,69 @@
+cff-version: 1.2.0
+message: "If you use this software or method, cite the preferred ChemRxiv preprint."
+title: "GPU Runtime-Steered Ultrashort MD Screening"
+type: software
+version: 0.1.0
+authors:
+  - given-names: Natsuki
+    family-names: Kanazawa
+  - given-names: Junta
+    family-names: Asano
+  - given-names: Mitsugu
+    family-names: Araki
+  - given-names: Takao
+    family-names: Otsuka
+  - given-names: Shigeyuki
+    family-names: Matsumoto
+repository-code: "https://github.com/clinfo/gpu-runtime-steered-ultrashort-md-screening"
+url: "https://github.com/clinfo/gpu-runtime-steered-ultrashort-md-screening"
+license: MIT
+preferred-citation:
+  type: article
+  title: "Runtime-steered ultrashort molecular dynamics enables million-pose protein–ligand screening"
+  authors:
+    - given-names: Natsuki
+      family-names: Kanazawa
+    - given-names: Junta
+      family-names: Asano
+    - given-names: Mitsugu
+      family-names: Araki
+    - given-names: Shingo
+      family-names: Okuno
+    - given-names: Takao
+      family-names: Otsuka
+    - given-names: Yuta
+      family-names: Isaka
+    - given-names: Hiroaki
+      family-names: Iwata
+    - given-names: Shuntaro
+      family-names: Chiba
+    - given-names: Yenni
+      family-names: Ng
+    - given-names: Yukiko
+      family-names: Muramoto
+    - given-names: Chiho
+      family-names: Onishi
+    - given-names: Kiyoshi
+      family-names: Takemura
+    - given-names: Biao
+      family-names: Ma
+    - given-names: Takashi
+      family-names: Katoh
+    - given-names: Kei
+      family-names: Terayama
+    - given-names: Norihito
+      family-names: Arichi
+    - given-names: Hiroaki
+      family-names: Ohno
+    - given-names: Takeshi
+      family-names: Noda
+    - given-names: Motonari
+      family-names: Uesugi
+    - given-names: Shigeyuki
+      family-names: Matsumoto
+    - given-names: Yasushi
+      family-names: Okuno
+  journal: ChemRxiv
+  year: 2026
+  doi: "10.26434/chemrxiv.15006352/v1"
+  url: "https://chemrxiv.org/doi/abs/10.26434/chemrxiv.15006352/v1"

@@ -1,0 +1,207 @@
+{
+  "$defs": {
+    "PoseManifestEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "index": {
+          "minLength": 1,
+          "title": "Index",
+          "type": "string"
+        },
+        "ligand_resname": {
+          "pattern": "^[A-Za-z0-9_+-]{1,16}$",
+          "title": "Ligand Resname",
+          "type": "string"
+        },
+        "overrides": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PoseOverrides"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "pose_id": {
+          "minLength": 1,
+          "title": "Pose Id",
+          "type": "string"
+        },
+        "prepared_system_dir": {
+          "minLength": 1,
+          "title": "Prepared System Dir",
+          "type": "string"
+        },
+        "start_structure": {
+          "minLength": 1,
+          "title": "Start Structure",
+          "type": "string"
+        },
+        "topology": {
+          "minLength": 1,
+          "title": "Topology",
+          "type": "string"
+        }
+      },
+      "required": [
+        "pose_id",
+        "prepared_system_dir",
+        "start_structure",
+        "topology",
+        "index",
+        "ligand_resname"
+      ],
+      "title": "PoseManifestEntry",
+      "type": "object"
+    },
+    "PoseOverrides": {
+      "additionalProperties": false,
+      "properties": {
+        "pruning": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PosePruningOverrides"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "trajectory": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PoseTrajectoryOverrides"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "title": "PoseOverrides",
+      "type": "object"
+    },
+    "PosePruningOverrides": {
+      "additionalProperties": false,
+      "properties": {
+        "enabled": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Enabled"
+        },
+        "grace_period_seconds": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Grace Period Seconds"
+        },
+        "threshold_angstrom": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Threshold Angstrom"
+        }
+      },
+      "title": "PosePruningOverrides",
+      "type": "object"
+    },
+    "PoseTrajectoryOverrides": {
+      "additionalProperties": false,
+      "properties": {
+        "base_seed": {
+          "anyOf": [
+            {
+              "maximum": 2147483647,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Base Seed"
+        },
+        "replicas": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Replicas"
+        },
+        "seeds": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Seeds"
+        }
+      },
+      "title": "PoseTrajectoryOverrides",
+      "type": "object"
+    }
+  },
+  "$id": "https://example.org/gpu-shortmd/pose-manifest.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "poses": {
+      "items": {
+        "$ref": "#/$defs/PoseManifestEntry"
+      },
+      "minItems": 1,
+      "title": "Poses",
+      "type": "array"
+    },
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "schema_version",
+    "poses"
+  ],
+  "title": "PoseManifest",
+  "type": "object"
+}

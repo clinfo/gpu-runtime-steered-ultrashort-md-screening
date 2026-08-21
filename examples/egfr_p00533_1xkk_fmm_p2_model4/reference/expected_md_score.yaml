@@ -1,0 +1,8 @@
+schema_version: 1
+pose_id: "P00533_EGFR|p2|model4"
+n_replicas: 5
+input_unit: nm
+output_unit: angstrom
+aggregation: max_over_time_then_max_over_replicas
+expected_md_score_angstrom: 4.872631
+tolerance_angstrom: 0.000001
